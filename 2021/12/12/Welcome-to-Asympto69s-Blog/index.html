@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>仅用于测试的博客 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="???">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仅用于测试的博客">
+<meta property="og:url" content="https://asympto69.github.io/2021/12/12/Welcome-to-Asympto69s-Blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="???">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-11T18:27:30.000Z">
+<meta property="article:modified_time" content="2021-12-11T18:33:12.874Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="test">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Asympto69.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Welcome-to-Asympto69s-Blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/12/12/Welcome-to-Asympto69s-Blog/" class="article-date">
+  <time class="dt-published" datetime="2021-12-11T18:27:30.000Z" itemprop="datePublished">2021-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      仅用于测试的博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>???</p>
+<span id="more"></span>
+
+<p>测试用途</p>
+<h2 id="Lucas定理"><a href="#Lucas定理" class="headerlink" title="Lucas定理"></a>Lucas定理</h2><p>​    Lucas定理（Lucas Theorem）是组合数学中一个重要的基本定理。它允许我们利用计算机快速求出模p意义下（其中<strong>p为质数</strong>）的组合数的值。</p>
+<p>​    在使用计算机求解组合数时，常使用下列式子（可由Lucas定理推得）：</p>
+<blockquote>
+<p>$C_n^m \equiv C_{\lfloor n/p \rfloor}^{\lfloor m/p \rfloor} * C_{n \mod p}^{m \mod p}\mod p$​</p>
+</blockquote>
+<p>​    下文中记 $C_n^m$ 为C(m,n)，且规定当n &lt; m时，C(m,n) = 0。</p>
+<p>​    不妨暂时称上述公式为<strong>Lucas同余式</strong>。此公式允许我们<strong>递归</strong>地求出C(m,n)在模p意义下的值。</p>
+<p>​    由于其证明涉及大量数学知识，在此略过（感兴趣的同学可以自己搜索Lucas定理的证明过程，一般会利用到<strong>二项式定理</strong>进行构造性证明，并且证明过程中包含一些重要推论）。</p>
+<p>​    可能我们看到这里时，会问一个问题：为什么要大费周章使用Lucas定理求解呢？</p>
+<p>​    大部分时候，我们会采用<strong>费马小定理</strong>求模p意义下的逆元：整数x的逆元为$x^{p-2}$。求解时可利用快速幂进行优化，单次求解的复杂度为O($log_2p$)，时间效率上相当优秀（也可以采用<strong>递推</strong>的方法求解某个连续自然数段floor~ceil的逆元，其复杂度为O(ceil - floor)即O(n)，达到线性程度。由于篇幅原因，此处不加赘述）。</p>
+<p>​    假设fac[x]代表 x! 在模p意义下的值，而inv(x)代表x在模p意义下的逆元，那么组合数C(m,n)在模p意义下的值就是fac[n] * inv(fac[m]) * inv(fac[n-m])。利用费马小定理求解组合数显得简单而快捷。</p>
+<p>​    但可能存在这么一种情况：若p是个较小的质数，此时<strong>整数x在模p意义下的逆元可能是不存在的</strong>（比如x是p的倍数），此时费马小定理就不再适用了。</p>
+<p>​    因此，我们不妨考虑进行<strong>分治</strong>，并引入Lucas定理求解：</p>
+<blockquote>
+<p>假设p为质数，m&lt;=n。</p>
+<p>当m&gt;n时，组合数C(m,n)无意义，设为0。</p>
+<ul>
+<li><p>当C(m,n)中的n位于(0,p-1]范围内，显然其逆元均是存在的，可利用费马小定理求解；</p>
+</li>
+<li><p>当n &gt;= p时，由Lucas同余式可知，C(m,n) = C(m/p,n/p) * C(m%p,n%p) %p。根据模除的性质，<strong>显然有m%p &lt; p与n%p &lt; p，均位于费马小定理适用的范围内</strong>，可利用费马小定理直接求解；</p>
+</li>
+<li><p>随后分析C(m/p,n/p)。若仍有n/p &gt;= p，显然可继续进行分治，过程同上。观察上述过程可知，最后必有m = 0，此时C(m,n) = 1，结束。</p>
+</li>
+</ul>
+<p>实际上，上述递归过程就是整数n,m进行<strong>p进制展开</strong>的过程（可以思考一下为什么）。并且可以很容易地得出其递归调用的次数为$log_pm$​​​。</p>
+<p>若<strong>线性预处理</strong>p以内的阶乘和逆元，则C(m%p,n%p)的求解过程可视为O(1)。那么，算法的总复杂度为O($p+qlog_pm$)，其中q为询问次数。</p>
+</blockquote>
+<p>​    上述过程可写成如下代码形式（略去了线性预处理的过程）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function">ll <span class="title">mpow</span><span class="params">(ll base,ll x,ll p)</span></span>&#123;  <span class="comment">//模p意义下的快速幂</span></span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&amp;<span class="number">1</span>)ans = ans*base%p;</span><br><span class="line">        base = base*base%p;</span><br><span class="line">        x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">C</span><span class="params">(ll m,ll n,ll p)</span></span>&#123;  <span class="comment">//模p意义下的组合数</span></span><br><span class="line">    <span class="keyword">return</span> n&lt;m ? <span class="number">0</span> : (fac[n] * inv[m])%p * inv[n-m] % p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意上述inv[x]表示fac[x]的逆元而非自然数x的逆元</span></span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">lucas</span><span class="params">(ll m,ll n,ll p)</span></span>&#123;  <span class="comment">//模p意义下的lucas函数</span></span><br><span class="line">    <span class="keyword">return</span> m == <span class="number">0</span> ? <span class="number">1</span> : <span class="built_in">lucas</span>(m/p,n/p,p) * <span class="built_in">C</span>(m%p,n%p,p) % p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    以上即Lucas定理的简述，希望能对读者有所帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://asympto69.github.io/2021/12/12/Welcome-to-Asympto69s-Blog/" data-id="ckx25pxsh000028ulexlh3gr8" data-title="仅用于测试的博客" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/12/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/test/" style="font-size: 10px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/12/Welcome-to-Asympto69s-Blog/">仅用于测试的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
