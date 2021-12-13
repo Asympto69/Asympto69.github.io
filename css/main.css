@@ -2622,7 +2622,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #e41c61;
+  background: #df66d0;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2656,9 +2656,6 @@ body {
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
   background: #fff;
-  opacity: 0.85;
-}
-.header-inner {
   opacity: 0.85;
 }
 .post {
