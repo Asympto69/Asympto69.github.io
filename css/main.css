@@ -2622,7 +2622,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #b5ad1a;
+  background: #90ffaa;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2651,8 +2651,8 @@ body {
 }
 .main-inner {
   background: #fff;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .header-inner {
-  opacity: 0.8;
+  opacity: 0.9;
 }
