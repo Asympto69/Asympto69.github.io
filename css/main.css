@@ -2635,7 +2635,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #f22bff;
+  background: #7eff28;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2675,7 +2675,7 @@ body {
   opacity: 0.85;
 }
 .sidebar {
-  background: url("/images/sidebar-image.jpg");
+  background: url("/source/images/sidebar-image.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
