@@ -28,7 +28,7 @@
 <meta property="og:description" content="树链剖分一般指重链剖分，是处理树上问题的一个有效手段。 从某种意义上来讲，树链剖分是一种优雅的暴力。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-13T12:52:21.000Z">
-<meta property="article:modified_time" content="2021-12-13T15:55:35.467Z">
+<meta property="article:modified_time" content="2021-12-13T15:57:42.226Z">
 <meta property="article:author" content="Asympto69">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="树上问题">
@@ -109,7 +109,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86%E6%96%BD%E5%B7%A5%E4%B8%AD..."><span class="nav-number">1.</span> <span class="nav-text">树链剖分（施工中...）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,7 +212,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-13 20:52:21 / 修改时间：23:55:35" itemprop="dateCreated datePublished" datetime="2021-12-13T20:52:21+08:00">2021-12-13</time>
+      <time title="创建时间：2021-12-13 20:52:21 / 修改时间：23:57:42" itemprop="dateCreated datePublished" datetime="2021-12-13T20:52:21+08:00">2021-12-13</time>
     </span>
 
   
@@ -228,29 +228,22 @@
         <p>树链剖分一般指重链剖分，是处理树上问题的一个有效手段。</p>
 <p>从某种意义上来讲，树链剖分是一种优雅的暴力。</p>
 <span id="more"></span>
-<h2 id="树链剖分施工中...">树链剖分（施工中...）</h2>
 <p>​ 常规意义上的树链剖分一般指<strong>重链剖分</strong>，实际上也可指长链剖分（以树的深度为依据进行划分）。在这篇博客中，若不特加说明，树链剖分均指前者，因为重链剖分的应用范围相对来说较为广泛。</p>
 <p>​ 下面一般简称树链剖分为树剖。</p>
 <p>​ 树剖不需要太多的前置知识，只需要了解<strong>DFS</strong>（深度优先搜索）、<strong>DFS序的概念</strong>以及<strong>线段树</strong>（实际上也可使用其他的数据结构进行维护，但较为少见）。如果对这几个方面不甚了解，推荐先学习这些前置知识对应的内容，否则很有可能似懂非懂、按图索骥，而没有真正吸收理解。</p>
-<blockquote>
-<p>概念</p>
-</blockquote>
+<h3 id="概念">概念</h3>
 <p>​ 树链剖分，顾名思义，是<strong>将一个树划分为多条链，并且以链为单位来完成查询/修改操作</strong>。</p>
 <p>​ 假设树上某节点u，那么u的各子树（这里指以u的各孩子节点为根的树）中<strong>包含节点数目最多</strong>的子树所对应的孩子称为u的<strong>重孩子</strong>，定义为son[u]。</p>
 <p>​ 连接u和son[u]的边称为<strong>重边</strong>，由多条连续重边构成的链称为<strong>重链</strong>。相应地，非重边的边称为轻边。若某个节点没有与重边相连，那么这个节点本身即是长度为零的重链。</p>
 <p>​ 下面把以x为根的树中所包含的节点数目称为x的size。</p>
-<blockquote>
-<p>性质</p>
-</blockquote>
+<h3 id="性质">性质</h3>
 <p>​ 假设一棵树的根节点为r，并且r有k个孩子。那么显然：<strong>其轻孩子的size至多为</strong><span class="math inline">\(\frac{1}{k}*size(k&gt;1)\)</span>。</p>
 <p>​ （Bug：r是k叉树 -&gt; r有k个孩子，原句表述不严谨）</p>
 <p>​ <strong>每次经过一条轻边，所到达子树的大小至少折半</strong>，因为r的轻孩子的size最大的情况就是r的每个孩子都分去平均等量的size[r]，而r具有轻孩子的条件是r的孩子数目大于2。</p>
 <p>​ 根据上述内容可知，树上任一节点到根节点的路径所经过的轻重链条数必定都小于logn。</p>
 <p>​ 由于我们每次操作均以重链为单位进行区间操作，由此可以推算得到树链剖分的时间复杂度为<span class="math inline">\(O(nlogn)\)</span>​。</p>
 <p>（限于课业压力，此处表述不清晰，将在后续逐步完善）</p>
-<blockquote>
-<p>使用方法</p>
-</blockquote>
+<h3 id="使用方法">使用方法</h3>
 <p>​ 对于需要进行剖分的树，选择一个节点作为其根节点（根据实际情况进行选择，一般来说可以任选），对其进行两次DFS。</p>
 <p>​ 第一次DFS，处理出子树的大小size以及深度dep等信息，并推得所有非叶节点的重孩子son。</p>
 <p>​ 第二次DFS，求节点的DFS序，但此轮搜索时优先搜索重孩子。这保证了<strong>任意一条重链在求得的DFS序上必然是连续的</strong>，因而对于每条重链都可将其视为简单的<strong>线性区间</strong>进行区间操作，而这项任务往往可以通过简单的数据结构（如线段树）去完成。</p>
