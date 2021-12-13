@@ -1311,8 +1311,8 @@ pre code {
 }
 .sidebar-inner {
   color: #999;
-  max-height: calc(100vh - 36px);
-  padding: 18px 10px;
+  max-height: calc(100vh - 60px);
+  padding: 30px 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -2632,7 +2632,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #3b4f75;
+  background: #04ff5b;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
