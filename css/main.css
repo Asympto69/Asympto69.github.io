@@ -2635,7 +2635,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #c7f6a3;
+  background: #f22bff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2675,7 +2675,26 @@ body {
   opacity: 0.85;
 }
 .sidebar {
+  background: url("/images/sidebar-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 0;
+  box-shadow: inset 0 2px 6px #000;
+  position: fixed;
+  top: 0;
+  transition: all 0.2s ease-out;
+  width: 320px;
+  z-index: 20;
   padding: 15px;
+}
+.sidebar a {
+  border-bottom-color: #fff;
+  color: #fff;
+}
+.sidebar a:hover {
+  border-bottom-color: $FFFFFF;
+  color: #fff;
 }
 .post {
   margin-top: 25px;
