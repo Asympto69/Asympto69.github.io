@@ -2635,7 +2635,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ff49d5;
+  background: #ff540d;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2675,13 +2675,6 @@ body {
   opacity: 0.85;
 }
 .sidebar {
-  bottom: 0;
-  box-shadow: inset 0 2px 6px #000;
-  position: fixed;
-  top: 0;
-  transition: all 0.2s ease-out;
-  width: 320px;
-  z-index: 20;
   padding: 15px;
 }
 .post {
