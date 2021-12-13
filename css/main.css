@@ -2622,7 +2622,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ba40f0;
+  background: #8e6745;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2645,13 +2645,14 @@ mjx-container[display='true'] + br {
 body {
   background: url("/images/background.jpg");
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: 50% 50%;
   background-size: cover;
 }
 .main-inner {
   background: #fff;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 .header-inner {
-  opacity: 0.9;
+  opacity: 0.85;
 }
