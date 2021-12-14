@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"asympto69.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"asympto69.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 <meta name="description" content="树链剖分一般指重链剖分，是处理树上问题的一个有效手段。 从某种意义上来讲，树链剖分是一种优雅的暴力。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树链剖分（施工ing）">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="树链剖分一般指重链剖分，是处理树上问题的一个有效手段。 从某种意义上来讲，树链剖分是一种优雅的暴力。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-13T12:52:21.000Z">
-<meta property="article:modified_time" content="2021-12-13T17:05:01.794Z">
+<meta property="article:modified_time" content="2021-12-14T05:52:40.865Z">
 <meta property="article:author" content="Asympto69">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="树上问题">
@@ -224,7 +224,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-14 01:05:01" itemprop="dateModified" datetime="2021-12-14T01:05:01+08:00">2021-12-14</time>
+        <time title="修改时间：2021-12-14 13:52:40" itemprop="dateModified" datetime="2021-12-14T13:52:40+08:00">2021-12-14</time>
       </span>
 
   
@@ -249,9 +249,9 @@
 <p>​ 连接u和son[u]的边称为<strong>重边</strong>，由多条连续重边构成的链称为<strong>重链</strong>。相应地，非重边的边称为轻边。若某个节点没有与重边相连，那么这个节点本身即是长度为零的重链。</p>
 <p>​ 下面把以x为根的树中所包含的节点数目称为x的size。</p>
 <h3 id="性质">性质</h3>
-<p>​ 假设一棵树的根节点为r，并且r有k个孩子。那么显然：<strong>其轻孩子的size至多为</strong><span class="math inline">\(\frac{1}{k}*size(k&gt;1)\)</span>。</p>
+<p>​ 假设一棵树的根节点为r，并且r有k个孩子。那么显然：<strong>其重孩子的size至少为</strong><span class="math inline">\(\frac{1}{k}*size[r](k&gt;1)\)</span>​。</p>
 <p>​ （Bug：r是k叉树 -&gt; r有k个孩子，原句表述不严谨）</p>
-<p>​ <strong>每次经过一条轻边，所到达子树的大小至少折半</strong>，因为r的轻孩子的size最大的情况就是r的每个孩子都分去平均等量的size[r]，而r具有轻孩子的条件是r的孩子数目大于2。</p>
+<p>​ <strong>每次经过一条轻边，所到达子树的大小至少折半</strong>。原因如下：r拥有轻孩子的条件是r的孩子数目大于2，假设连接的是轻边，显然这条轻边连接的轻孩子必定不大于<span class="math inline">\(\frac{size[r]}{2}\)</span>，否则它将成为重孩子，即与假设相矛盾。</p>
 <p>​ 根据上述内容可知，树上任一节点到根节点的路径所经过的轻重链条数必定都小于logn。</p>
 <p>​ 由于我们每次操作均以重链为单位进行区间操作，由此可以推算得到树链剖分的时间复杂度为<span class="math inline">\(O(nlogn)\)</span>​。</p>
 <p>（限于课业压力，此处表述不清晰，将在后续逐步完善）</p>
