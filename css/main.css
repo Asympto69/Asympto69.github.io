@@ -1000,7 +1000,6 @@ pre code {
   line-height: 1.8;
   padding: 0.25em 0.75em;
   text-align: center;
-  transition: all 0.2s ease-out;
 }
 .post-body .tabs ul.nav-tabs li.tab a i,
 .tabs-comment ul.nav-tabs li.tab a i {
@@ -2643,7 +2642,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4f8f0f;
+  background: #ffb3ff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2680,7 +2679,10 @@ body {
   opacity: 0.85;
 }
 .header-inner {
+  background: rgba(255,255,255,0.9);
   opacity: 0.85;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 .sidebar {
   padding: 15px;
