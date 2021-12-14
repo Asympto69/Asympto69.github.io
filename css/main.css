@@ -2620,7 +2620,7 @@ mjx-container[display='true'] + br {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #7cad94;
+  background: #5e6936;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2644,23 +2644,19 @@ body {
   background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 50% 50%;
+  background-position: center;
   background-size: cover;
 }
 .main-inner {
   margin-top: 25px;
   margin-bottom: 60px;
   padding: 60px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
   background: #fff;
   opacity: 0.85;
 }
 .header-inner {
-  background: rgba(255,255,255,0.9);
+  background: #fff;
   opacity: 0.85;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 .sidebar {
   padding: 15px;
@@ -2669,6 +2665,14 @@ body {
   margin-top: 25px;
   margin-bottom: 60px;
   padding: 60px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #fc6423;
 }
