@@ -28,7 +28,7 @@
 <meta property="og:description" content="​ 树链剖分一般指重链剖分，是处理树上问题的一个有效手段。 ​ 从某种意义上来讲，树链剖分是一种优雅的暴力。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-13T12:52:21.000Z">
-<meta property="article:modified_time" content="2021-12-15T05:25:25.929Z">
+<meta property="article:modified_time" content="2022-01-05T09:52:04.810Z">
 <meta property="article:author" content="Asympto69">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
@@ -119,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -221,7 +221,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-15 13:25:25" itemprop="dateModified" datetime="2021-12-15T13:25:25+08:00">2021-12-15</time>
+        <time title="修改时间：2022-01-05 17:52:04" itemprop="dateModified" datetime="2022-01-05T17:52:04+08:00">2022-01-05</time>
       </span>
 
   
@@ -231,14 +231,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.1k</span>
+      <span>8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>24 分钟</span>
+      <span>27 分钟</span>
     </span>
 </div>
 
@@ -252,25 +252,29 @@
         <p>​ 树链剖分一般指重链剖分，是处理树上问题的一个有效手段。</p>
 <p>​ 从某种意义上来讲，树链剖分是一种<strong>优雅的暴力</strong>。</p>
 <span id="more"></span>
-<p>​ 常规意义上的树链剖分一般指<strong>重链剖分</strong>，实际上也可指长链剖分（以树的深度为依据进行划分）。在这篇博客中，若不特加说明，树链剖分均指前者，因为重链剖分的应用范围相对来说较为广泛。</p>
-<p>​ 下面一般简称树链剖分为树剖。</p>
-<p>​ 树剖不需要太多的前置知识，只需要了解<strong>DFS</strong>（深度优先搜索）、<strong>DFS序的概念</strong>以及<strong>线段树</strong>（实际上也可使用其他的数据结构进行维护，但较为少见）。如果对这几个方面不甚了解，推荐先学习这些前置知识对应的内容，否则很有可能似懂非懂、按图索骥，而没有真正吸收理解。</p>
+<p>​ 常规意义上的树链剖分一般指<strong>重链剖分</strong>，实际上也可指长链剖分、虚实链剖分。在这篇博客中，若不特加说明，树链剖分均指前者，因为重链剖分的应用范围相对来说较为广泛。</p>
 <h3 id="概念">概念</h3>
 <p>​ 树链剖分，顾名思义，是<strong>将一个树划分为多条链，并且以链为单位来完成查询/修改操作</strong>。</p>
 <p>​ 假设树上某节点u，那么u的各子树（这里指以u的各孩子节点为根的树）中<strong>包含节点数目最多</strong>的子树所对应的孩子称为u的<strong>重孩子</strong>，定义为son[u]。</p>
-<p>​ 连接u和son[u]的边称为<strong>重边</strong>，由多条连续重边构成的链称为<strong>重链</strong>。相应地，非重边的边称为轻边。若某个节点在某条路径上没有与重边相连，那么这个节点本身在这条路径上即为长度为零的重链。</p>
+<p>​ 连接u和son[u]的边称为<strong>重边</strong>，由多条连续重边构成的链称为<strong>重链</strong>。相应地，非重边的边称为轻边。若一条轻边连接着一个叶子节点，那么这个叶子节点可视为位于长度为0的重链上。</p>
 <p>​ 下面把以x为根的树中所包含的节点数目称为x的size。</p>
 <h3 id="性质">性质</h3>
 <p>​ 假设一棵树的根节点为r，并且r有k个孩子。那么显然：<strong>其重孩子的size至少为</strong><span class="math inline">\(\frac{1}{k}*size[r](k&gt;1)\)</span>​。</p>
 <p>​ <strong>每次经过一条轻边，所到达子树的大小至少折半</strong>。原因如下：r拥有轻孩子的条件是r的孩子数目大于2，假设连接的是轻边，显然这条轻边连接的轻孩子的size必定不大于<span class="math inline">\(\frac{size[r]}{2}\)</span>，否则它将成为重孩子，即与假设相矛盾。</p>
-<p>​ 根据上述性质，我们可以知道：<strong>由根节点出发到树上任一节点，经过的轻边数目必然小于<span class="math inline">\(log_2n\)</span></strong>。而重边只能插入到这条路径的两条轻边之间或是边界位置，且连续重边会形成一条重链，因此这条路径上重链的数目必然不可能超过<span class="math inline">\(log_2n+2\)</span>。</p>
-<p>​ 因此，<strong>对于任意一条树上路径，其经过的轻重链条数的数量级必定至多为<span class="math inline">\(O(logn)\)</span>级别</strong>，也就意味着，利用树剖维护树上路径的区间信息时，<strong>每次处理整条路径最多只需进行<span class="math inline">\(log_2n\)</span>​次操作</strong>。</p>
-<p>​ 由于我们每次操作均以重链为单位进行区间操作，假设利用线段树进行操作且线段树每次操作的复杂度为<span class="math inline">\(O(logn)\)</span>。由此可以推算得到：包括预处理在内的树链剖分的总时间复杂度为<span class="math inline">\(O(n+qlog^2n)\)</span>​，其中q为询问次数。</p>
-<h3 id="使用方法">使用方法</h3>
-<p>​ 对于需要进行剖分的树，选择一个节点作为其根节点（根据实际情况进行选择，一般来说可以任选），对其进行两次DFS。</p>
-<p>​ 第一次DFS，处理出子树的大小size以及深度dep等信息，并推得所有非叶节点的重孩子son。</p>
-<p>​ 第二次DFS，求节点的DFS序，但此轮搜索时优先搜索重孩子。这保证了<strong>任意一条重链在求得的DFS序上必然是连续的</strong>，因而对于每条重链都可将其视为简单的<strong>线性区间</strong>进行区间操作，而这项任务往往可以通过简单的数据结构（如线段树）去完成。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;  <span class="comment">//u代表节点，fa代表u的父亲</span></span><br><span class="line">    par[u] = fa;</span><br><span class="line">    dep[u] = dep[fa]+<span class="number">1</span>;</span><br><span class="line">    size[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u] ; i ; i = E[i].nx)&#123;  <span class="comment">//通过链式前向星遍历u的出边</span></span><br><span class="line">        <span class="keyword">if</span>(E[i].to == fa)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">dfs1</span>(E[i].to, u);</span><br><span class="line">        size[u] += size[to];</span><br><span class="line">        <span class="keyword">if</span>(size[to] &gt; size[son[u]])son[u] = to;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> top[N];  <span class="comment">//top[u]表示u所在重链的起始位置</span></span><br><span class="line"><span class="keyword">int</span> rk[N];  <span class="comment">//rk[u]表示u在dfs序中的位置</span></span><br><span class="line"><span class="keyword">int</span> pid[N];  <span class="comment">//pid[u]表示dfs序中的位置对应的节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    top[u] = tp;</span><br><span class="line">    rk[u] = ++cnt;</span><br><span class="line">    pid[cnt] = u;</span><br><span class="line">    <span class="keyword">if</span>(son[u])<span class="built_in">dfs2</span>(son[u],tp);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u] ; i ; i = E[i].nx)&#123;</span><br><span class="line">        <span class="keyword">if</span>(E[i].to == par[u] || E[i].to == son[u])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs2</span>(E[i].to, E[i].to);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​ 根据上述性质，我们可以知道：<strong>由根节点出发到树上任一节点，经过的轻边数目必然小于<span class="math inline">\(log_2n\)</span></strong>。而重边只能插入到这条路径的两条轻边之间或是边界位置，且<strong>连续重边会形成一条重链</strong>。因此，这条路径上重链的数目必然不可能超过<span class="math inline">\(log_2n+2\)</span>​。</p>
+<p>​ 由上述结论可知，<strong>对于任意一条树上路径，其经过的轻重链条数的数量级必定至多为<span class="math inline">\(O(logn)\)</span>级别</strong>，也就意味着，利用树剖维护树上路径的区间信息时，<strong>每次处理整条路径最多只需进行<span class="math inline">\(O(logn)\)</span>​次区间操作</strong>。</p>
+<p>​ 由于我们每次操作均以重链为单位进行区间操作，假设每次区间操作的复杂度为<span class="math inline">\(O(k)\)</span>​。由此可以推算得到：包括预处理在内的树链剖分的总时间复杂度为<span class="math inline">\(O(n+qklogn)\)</span>​​​​​​，其中q为询问次数。</p>
+<h3 id="代码实现">代码实现</h3>
+<p>​ 选择树的某一节点作为其根节点（一般来说是可以任选的，具体题目具体分析），而后进行两次DFS。</p>
+<p>​ 第一次DFS，处理出子树的大小size以及深度dep等信息，并得到所有节点的重孩子son。</p>
+<p>​ 第二次DFS，求该树的DFS序，并求得每个节点所在重链的top（重链上深度最小的节点）。由于搜索时优先搜索重孩子。这保证了<strong>任意一条重链在求得的DFS序上必然是连续的</strong>，因而对于每条重链操作时，都相当于对dfs序上的一个连续区间进行操作，而简单的区间操作正是我们所擅长的。</p>
+<p>​ 考虑从x到y的一条树上路径。那么显然，这条路径可以被分解为若干条重链以及轻边所组成的区间。我们每次处理x所在当前链或者y所在的当前链、对其进行区间操作，而后使其跳转到下一条待处理链的端点上。容易想到的问题是，如果点每次以链为单位进行跳转，由于 <span class="math inline">\(lca(x,y)\)</span> 可能并不在重链的端点上，显然点有可能会跳到 <span class="math inline">\(lca(x,y)\)</span>​ 的上面去。</p>
+<p>​ 显然，若点按照上面的方式跳转，只有重链才会导致点“跳过头”。</p>
+<p>​ 我们不妨考虑这样一种处理方式：每次处理dep[top]较大的点所在的重链、对该重链对应的dfs序区间进行操作，而后跳转到下一条链的端点上，不断重复上述过程，直至top[x] == top[y]，结束。</p>
+<p>​ 由重孩子的定义，可知x到y的路径上至多有一条横跨 <span class="math inline">\(lca(x,y)\)</span> 的重链。因此，另一条链的top的深度必定大于 <span class="math inline">\(lca(x,y)\)</span> 的深度，即在 <span class="math inline">\(lca(x,y)\)</span> 的下方。所以每次处理dep[top]较大的点所在的重链可以保证不会使某个点“跳过头”。</p>
+<p>​ 同时，每次操作都会有一个节点向上爬升，且点爬升的高度是有限的，所以必然会有一个点率先到达 <span class="math inline">\(lca(x,y)\)</span>。当某个点率先到达 <span class="math inline">\(lca(x,y)\)</span> 后，另一个点继续不断以链为单位进行操作、跳转，直到top[x] == top[y]，即这个点与 <span class="math inline">\(lca(x,y)\)</span> 位于同一条重链上。</p>
+<p>​ 而后就是简单的特判。此时x和y中深度较小的节点即为 <span class="math inline">\(lca(x,y)\)</span>​​， <span class="math inline">\(lca(x,y)\)</span>​​ 虽​不一定是重链的一端，但无伤大雅：x和y在同一条重链上就意味着此时x到y的路径在dfs序中位于连续区间上，设 <span class="math inline">\(rk[p]\)</span>​ 为节点 <span class="math inline">\(p\)</span>​ 在dfs序中的位置，则此时只需要对<span class="math inline">\([rk[x],rk[y]]\)</span>​​ 这个区间进行操作即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;  <span class="comment">//fa代表u的父亲</span></span><br><span class="line">    par[u] = fa;</span><br><span class="line">    dep[u] = dep[fa]+<span class="number">1</span>;</span><br><span class="line">    size[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u] ; i ; i = E[i].nx)&#123;</span><br><span class="line">        <span class="keyword">int</span>&amp; to = E[i].to;</span><br><span class="line">        <span class="keyword">if</span>(to == fa)<span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">dfs1</span>(to,u);</span><br><span class="line">        size[u] += size[to];</span><br><span class="line">        <span class="keyword">if</span>(size[to] &gt; size[son[u]])son[u] = to;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> top[N];  <span class="comment">//top[u]表示u所在重链的起始位置</span></span><br><span class="line"><span class="keyword">int</span> rk[N];  <span class="comment">//rk[u]表示u在dfs序中的位置</span></span><br><span class="line"><span class="keyword">int</span> pid[N];  <span class="comment">//pid[u]表示dfs序中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    top[u] = tp;</span><br><span class="line">    rk[u] = ++cnt;</span><br><span class="line">    pid[cnt] = u;</span><br><span class="line">    <span class="keyword">if</span>(son[u])<span class="built_in">dfs2</span>(son[u],tp);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u] ; i ; i = E[i].nx)&#123;</span><br><span class="line">        <span class="keyword">int</span>&amp; to = E[i].to;</span><br><span class="line">        <span class="keyword">if</span>(to == par[u] || to == son[u])<span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs2</span>(to,to);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> st,<span class="keyword">int</span> ed)</span></span>&#123;  <span class="comment">//对于单条重链的区间操作</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dcp</span><span class="params">()</span></span>&#123;  <span class="comment">//dcp意为decomposition，表示把x到y的树上路径划分为由若干条链组成的区间。</span></span><br><span class="line">    <span class="keyword">while</span>(top[x] != top[y])&#123;</span><br><span class="line">        <span class="keyword">int</span>&amp; z = dep[top[x]]&gt;dep[top[y]] ? x : y;</span><br><span class="line">        <span class="built_in">func</span>(rk[top[z]],rk[z]);</span><br><span class="line">        z = par[top[z]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//在结束此轮循环后，x和y已经跳到同一条重链上了。</span></span><br><span class="line">    dep[x] &lt; dep[y] ? <span class="built_in">func</span>(x,y) : <span class="built_in">func</span>(y,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="例题">例题</h3>
 <p>​ 限于篇幅原因，下列代码段<strong>仅给出AC代码中与树剖相关的内容</strong>，便于集中注意力理解树链剖分使用的过程。其余的部分重要程度较低，因此在此略过。</p>
 <p>​ 若需参照，结合上方的树剖模板即可。希望能对读者有所帮助。</p>
@@ -342,7 +346,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -354,14 +358,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">9k</span>
+    <span title="站点总字数">10k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">33 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
